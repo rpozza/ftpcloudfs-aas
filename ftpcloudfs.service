@@ -1,0 +1,15 @@
+[Unit]
+Description=FTP to Swift Object Storage Service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/screen -dmS ftpcloudfs-service /home/ubuntu/ftcloudps-asas/run.sh
+ExecStop=/usr/bin/screen -S ftpcloudfs-service -X quit
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
+
